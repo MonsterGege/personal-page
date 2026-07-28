@@ -43,6 +43,27 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ─── Mobile Scroll Performance ─── */
+@media (max-width: 767px), (hover: none) {
+  html {
+    /* Avoid jank: let browser handle scroll smoothing natively */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  main {
+    /* Ensure smooth touch scrolling and allow vertical pan without delay */
+    touch-action: pan-y;
+    /* Promote scroll container to its own layer */
+    will-change: scroll-position;
+  }
+
+  /* Prevent fixed layers from triggering repaints during scroll */
+  .fixed {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+}
+
 /* ─── 3D Perspective ─── */
 .perspective {
   perspective: 1200px;
@@ -75,6 +96,14 @@ html {
   border: 1px solid var(--card-border);
   border-radius: 1.25rem;
   transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+}
+
+/* Reduce backdrop-filter on mobile — extremely expensive during scroll */
+@media (max-width: 767px), (hover: none) {
+  .glass-card {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
 }
 
 .glass-card:hover {
@@ -174,4 +203,14 @@ html {
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   z-index: 1;
+  will-change: transform;
+  /* Promote to own layer so it doesn't force repaints on scroll */
+  transform: translateZ(0);
+}
+
+/* Disable noise overlay on mobile — fixed SVG filter layers kill scroll perf on iOS/Android */
+@media (max-width: 767px), (hover: none) {
+  .noise-overlay::after {
+    display: none;
+  }
 }

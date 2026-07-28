@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef, type ReactNode } from "react";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 interface TiltCardProps {
   children: ReactNode;
@@ -15,6 +16,7 @@ export function TiltCard({
   glowColor = "rgba(6, 182, 212, 0.15)",
 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -26,7 +28,7 @@ export function TiltCard({
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-8deg", "8deg"]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
+    if (isMobile || !ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
@@ -40,6 +42,15 @@ export function TiltCard({
     x.set(0);
     y.set(0);
   };
+
+  // On mobile: no perspective, no 3D transforms, no translateZ
+  if (isMobile) {
+    return (
+      <div className={`glass-card relative ${className}`}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <div className="perspective">
@@ -83,14 +94,19 @@ export function FloatingElement({
   y = 15,
   className = "",
 }: FloatingElementProps) {
+  const isMobile = useIsMobile();
+
+  // Reduce floating motion on mobile to avoid jank
+  const mobileY = Math.round(y * 0.4);
+
   return (
     <motion.div
       animate={{
-        y: [-y, y, -y],
-        rotateZ: [-1, 1, -1],
+        y: isMobile ? [-mobileY, mobileY, -mobileY] : [-y, y, -y],
+        rotateZ: isMobile ? [0, 0, 0] : [-1, 1, -1],
       }}
       transition={{
-        duration,
+        duration: isMobile ? duration * 1.5 : duration,
         repeat: Infinity,
         ease: "easeInOut",
         delay,

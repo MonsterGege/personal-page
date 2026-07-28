@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 interface Particle {
   x: number;
@@ -27,8 +28,12 @@ export function ParticleBackground() {
   const mouseRef = useRef({ x: -1000, y: -1000 });
   const particlesRef = useRef<Particle[]>([]);
   const animRef = useRef<number>(0);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
+    // Completely skip particle animation on mobile — it kills scroll performance
+    if (isMobile) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -141,7 +146,10 @@ export function ParticleBackground() {
       window.removeEventListener("mousemove", handleMouse);
       cancelAnimationFrame(animRef.current);
     };
-  }, []);
+  }, [isMobile]);
+
+  // Don't render canvas at all on mobile
+  if (isMobile) return null;
 
   return (
     <canvas
@@ -154,6 +162,17 @@ export function ParticleBackground() {
 
 /* ─── Animated Mesh Gradient ─── */
 export function MeshGradientBackground() {
+  const isMobile = useIsMobile();
+
+  // On mobile: render a simplified static gradient instead of animated blobs with huge blurs
+  if (isMobile) {
+    return (
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute inset-0 bg-gradient-to-br from-accent-cyan/5 via-accent-violet/5 to-accent-pink/5" />
+      </div>
+    );
+  }
+
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
       {/* Primary large gradient blobs */}
