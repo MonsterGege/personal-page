@@ -712,7 +712,7 @@ const experiences = [
     points: [
       "Spearheaded cloud migration of 70%+ Alfamart stores (≈10,000+ branches) from legacy to cloud-native infrastructure — cutting downtime by 30% and boosting transaction throughput by 25%.",
       "Architected and built high-performance Golang microservices for Parquet-based data pipelines, managing large-scale database operations and ETL workflows.",
-      "Collaborated with frontend teams on design system development, bridging backend APIs with Next.js-powered interfaces for internal tools.",
+      "Collaborated with frontend teams on design system development",
       "Designed and shipped production-grade microservices using Golang (Echo) and Python (FastAPI, Flask) with clean architecture patterns.",
       "Deployed containerized services to Cloud Run and Compute Engine with Load Balancing, integrated with Cloud SQL, Pub/Sub, and Secret Manager.",
       "Engineered automated CI/CD pipelines with Jenkins for zero-downtime deployments across multiple environments.",
