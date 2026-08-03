@@ -438,44 +438,86 @@ export default function Home() {
             <div className="h-1 w-20 bg-gradient-to-r from-accent-cyan to-accent-violet rounded-full mb-12" />
           </Reveal>
 
-          <Reveal delay={0.1}>
-            <TiltCard className="p-8 md:p-10" glowColor="rgba(6, 182, 212, 0.15)">
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
-                <div>
-                  <h3 className="text-2xl font-bold text-foreground mb-1">
-                    My Pocket
-                  </h3>
-                  <p className="text-accent-cyan font-medium">
-                    Personal Finance Manager
-                  </p>
+          <div className="space-y-8">
+            <Reveal delay={0.1}>
+              <TiltCard className="p-8 md:p-10" glowColor="rgba(6, 182, 212, 0.15)">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
+                  <div>
+                    <h3 className="text-2xl font-bold text-foreground mb-1">
+                      My Pocket
+                    </h3>
+                    <p className="text-accent-cyan font-medium">
+                      Personal Finance Manager
+                    </p>
+                  </div>
+                  <a
+                    href="https://my-pocket.schum.web.id"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-accent-cyan/15 to-accent-violet/15 border border-accent-cyan/30 text-accent-cyan hover:border-accent-cyan/60 hover:shadow-lg hover:shadow-accent-cyan/10 transition-all whitespace-nowrap"
+                  >
+                    Live Demo ↗
+                  </a>
                 </div>
-                <a
-                  href="https://my-pocket.schum.web.id"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-accent-cyan/15 to-accent-violet/15 border border-accent-cyan/30 text-accent-cyan hover:border-accent-cyan/60 hover:shadow-lg hover:shadow-accent-cyan/10 transition-all whitespace-nowrap"
-                >
-                  Live Demo ↗
-                </a>
-              </div>
-              <p className="text-muted leading-relaxed mb-6">
-                A full-stack personal finance tracking application to manage expenses, income, and budgets.
-                Built with modern web technologies and deployed on a self-managed cloud server with Nginx reverse proxy and SSL.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {["Next.js", "TypeScript", "Supabase", "Nginx", "PM2", "Certbot SSL"].map(
-                  (tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 rounded-full text-xs font-mono bg-accent-cyan/10 border border-accent-cyan/20 text-accent-cyan"
-                    >
-                      {tech}
-                    </span>
-                  )
-                )}
-              </div>
-            </TiltCard>
-          </Reveal>
+                <p className="text-muted leading-relaxed mb-6">
+                  A full-stack personal finance tracking application to manage expenses, income, and budgets.
+                  Built with modern web technologies and deployed on a self-managed cloud server with Nginx reverse proxy and SSL.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["Next.js", "TypeScript", "Supabase", "Nginx", "PM2", "Certbot SSL"].map(
+                    (tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 rounded-full text-xs font-mono bg-accent-cyan/10 border border-accent-cyan/20 text-accent-cyan"
+                      >
+                        {tech}
+                      </span>
+                    )
+                  )}
+                </div>
+              </TiltCard>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <TiltCard className="p-8 md:p-10" glowColor="rgba(139, 92, 246, 0.15)">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
+                  <div>
+                    <h3 className="text-2xl font-bold text-foreground mb-1">
+                      PT. Trisons Niaga Pratama
+                    </h3>
+                    <p className="text-accent-violet font-medium">
+                      Maritime Company Website
+                    </p>
+                  </div>
+                  <a
+                    href="https://trisons.schum.web.id"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-accent-violet/15 to-accent-pink/15 border border-accent-violet/30 text-accent-violet hover:border-accent-violet/60 hover:shadow-lg hover:shadow-accent-violet/10 transition-all whitespace-nowrap"
+                  >
+                    Live Site ↗
+                  </a>
+                </div>
+                <p className="text-muted leading-relaxed mb-6">
+                  A company profile website for PT. Trisons Niaga Pratama — a maritime shipping company
+                  specializing in cargo transhipment, inter-island long towing, and coal transport brokerage
+                  across the Indonesian archipelago.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["Next.js", "TypeScript", "Responsive Design", "Company Profile", "Maritime"].map(
+                    (tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 rounded-full text-xs font-mono bg-accent-violet/10 border border-accent-violet/20 text-accent-violet"
+                      >
+                        {tech}
+                      </span>
+                    )
+                  )}
+                </div>
+              </TiltCard>
+            </Reveal>
+          </div>
         </div>
       </section>
 
