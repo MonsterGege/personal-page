@@ -215,7 +215,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="text-accent-cyan font-mono text-sm mb-4 tracking-wider"
             >
-              &#47;&#47; Hello World, I&apos;m
+              &#47;&#47; Hi! I&apos;m
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 40 }}
@@ -241,7 +241,7 @@ export default function Home() {
             >
               <div className="h-px w-12 bg-gradient-to-r from-accent-cyan to-transparent" />
               <span className="text-xl text-muted font-light tracking-wide">
-                Backend Engineer & Cloud Developer
+                Backend Engineer, Cloud Developer & SRE
               </span>
             </motion.div>
             <motion.p
@@ -250,10 +250,10 @@ export default function Home() {
               transition={{ delay: 1.3 }}
               className="text-muted leading-relaxed max-w-lg mb-10 text-base"
             >
-              3+ years crafting scalable microservices, cloud-native data pipelines,
-              and distributed systems with Golang, Python & GCP. I build the backend
-              that powers enterprise-scale applications — from Parquet data processing
-              to high-throughput APIs serving thousands of stores.
+              4+ years crafting scalable microservices, cloud-native data pipelines,
+              and distributed systems with Golang, Python & GCP. Experienced in SRE
+              practices, Kubernetes (GKE), and infrastructure reliability. I build the
+              backend that powers enterprise-scale applications — serving 15,000+ stores.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -312,7 +312,7 @@ export default function Home() {
             </FloatingElement>
             <FloatingElement delay={5} duration={7.5} y={14} className="absolute top-[40%] -left-10 z-20">
               <div className="glass-card px-4 py-2 text-xs font-mono text-foreground shadow-lg shadow-foreground/10">
-                Next.js
+                Kubernetes
               </div>
             </FloatingElement>
 
@@ -369,14 +369,15 @@ export default function Home() {
           <Reveal delay={0.2}>
             <TiltCard className="p-8 md:p-12">
               <p className="text-muted leading-relaxed text-lg md:text-xl">
-                Backend Engineer & Cloud Developer specializing in{" "}
+                Backend Engineer, Cloud Developer & Site Reliability Engineer specializing in{" "}
                 <span className="text-accent-cyan">Golang</span>,{" "}
                 <span className="text-accent-violet">Python</span>, and{" "}
                 <span className="text-accent-pink">Google Cloud Platform</span>.
                 Strong background in system migration, API design (REST), and
-                database optimization (PostgreSQL). Skilled in cloud
-                infrastructure on GCP (Cloud Run, Cloud SQL, Pub/Sub) and CI/CD
-                automation (Jenkins).
+                database optimization (PostgreSQL). Experienced in SRE practices
+                including incident management, SLI/SLO monitoring, and infrastructure
+                reliability. Skilled in Kubernetes (GKE), CI/CD
+                automation (Jenkins), and containerized deployments.
               </p>
               <p className="text-muted leading-relaxed text-lg md:text-xl mt-6">
                 Adept at applying OOP, data structures, and algorithms to deliver
@@ -630,7 +631,7 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
             {contacts.map((contact, i) => (
               <Reveal key={contact.label} delay={0.1 + i * 0.15} direction="scale">
                 <ContactItem {...contact} />
@@ -689,7 +690,7 @@ function ContactItem({
 /* ─── Data ─── */
 const skills = [
   {
-    title: "Languages",
+    title: "Languages & Frameworks",
     icon: "⚡",
     glow: "rgba(6, 182, 212, 0.15)",
     items: ["Golang (Echo)", "Python (FastAPI, Flask)", "TypeScript (Next.js)", "RESTful APIs & HTTP"],
@@ -702,8 +703,8 @@ const skills = [
       "Google Cloud Platform",
       "Cloud Run, Cloud SQL, Pub/Sub",
       "Compute Engine, Load Balancing",
-      "Secret Manager",
-      "Docker & Linux",
+      "Kubernetes (GKE)",
+      "Secret Manager, Docker, Linux",
     ],
   },
   {
@@ -719,45 +720,47 @@ const skills = [
     items: [
       "Jenkins Pipelines",
       "Docker Containers",
-      "Compute Engine",
       "Automated Deployments",
+      "Zero-downtime Releases",
     ],
   },
   {
-    title: "CS Fundamentals",
+    title: "SRE & Reliability",
+    icon: "🛡️",
+    glow: "rgba(16, 185, 129, 0.15)",
+    items: [
+      "Incident Management & On-Call",
+      "SLI/SLO Monitoring",
+      "Capacity Planning",
+      "Observability: Logging, Metrics, Tracing",
+    ],
+  },
+  {
+    title: "Other",
     icon: "🧠",
     glow: "rgba(139, 92, 246, 0.15)",
     items: [
       "OOP & Design Patterns",
-      "Data Structures & Algorithms",
+      "DSA (Data Structures & Algorithms)",
       "System Design & Architecture",
-    ],
-  },
-  {
-    title: "Collaboration",
-    icon: "🤝",
-    glow: "rgba(236, 72, 153, 0.12)",
-    items: [
-      "Design System Development",
-      "Cross-functional Team Collaboration",
-      "Observability: Logging, Metrics, Tracing",
-      "Agile Methodology",
+      "Agile, Cross-functional Collaboration",
     ],
   },
 ];
 
 const experiences = [
   {
-    title: "Backend Engineer & Cloud Developer",
+    title: "Backend Engineer, Cloud Developer & SRE",
     company: "PT. Sumber Alfaria Trijaya",
     period: "Jul 2022 — Present",
     points: [
-      "Spearheaded cloud migration of 70%+ Alfamart stores (≈10,000+ branches) from legacy to cloud-native infrastructure — cutting downtime by 30% and boosting transaction throughput by 25%.",
-      "Architected and built high-performance Golang microservices for Parquet-based data pipelines, managing large-scale database operations and ETL workflows.",
-      "Collaborated with frontend teams on design system development",
-      "Designed and shipped production-grade microservices using Golang (Echo) and Python (FastAPI, Flask) with clean architecture patterns.",
-      "Deployed containerized services to Cloud Run and Compute Engine with Load Balancing, integrated with Cloud SQL, Pub/Sub, and Secret Manager.",
+      "Spearheaded cloud migration of 70%+ Alfamart stores (≈15,000+ stores) from legacy to cloud-native infrastructure — cutting downtime by 30% and boosting transaction throughput by 25%.",
+      "Architected high-performance Golang microservices for Parquet-based data pipelines, managing large-scale database operations and ETL workflows.",
+      "Built a master transfer system to migrate data from warehouse to stores at start-of-day and collect transaction/inventory data from stores back to warehouse at end-of-day, ensuring data consistency across ≈15,000+ stores.",
+      "Deployed containerized services to Cloud Run, Compute Engine, and GKE with Load Balancing, integrated with Cloud SQL, Pub/Sub, and Secret Manager.",
       "Engineered automated CI/CD pipelines with Jenkins for zero-downtime deployments across multiple environments.",
+      "Maintained site reliability — defined SLIs/SLOs, managed incident response, conducted post-mortems, and implemented observability stack (logging, metrics, tracing).",
+      "Collaborated with frontend teams on design system development, improving cross-functional delivery speed.",
     ],
   },
   {
@@ -790,5 +793,17 @@ const contacts = [
     icon: "📍",
     label: "Location",
     value: "Tanjung Priok, Jakarta Utara",
+  },
+  {
+    icon: "🌐",
+    label: "Website",
+    value: "schum.web.id",
+    href: "https://schum.web.id",
+  },
+  {
+    icon: "💻",
+    label: "GitHub",
+    value: "github.com/MonsterGege",
+    href: "https://github.com/MonsterGege",
   },
 ];
