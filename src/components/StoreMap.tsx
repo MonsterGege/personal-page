@@ -29,7 +29,7 @@ export default function StoreMap() {
           Store Network — ID Region
         </span>
         <span className="font-mono text-[10px] uppercase tracking-widest text-muted">
-          15,000+ nodes
+          20,000+ nodes
         </span>
       </div>
 

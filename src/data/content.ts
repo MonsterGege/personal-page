@@ -48,9 +48,9 @@ export const navItems: NavItem[] = [
 ];
 
 export const stats: Stat[] = [
-  { target: 15000, prefix: "", suffix: "+", label: "stores migrated to cloud", accent: "#e8a838" },
-  { target: 30, prefix: "−", suffix: "%", label: "downtime after migration", accent: "#58b894" },
-  { target: 25, prefix: "+", suffix: "%", label: "transaction throughput", accent: "#e06a45" },
+  { target: 20000, prefix: "", suffix: "+", label: "stores migrated to cloud", accent: "#e8a838" },
+  { target: 50, prefix: "−", suffix: "%", label: "downtime after migration", accent: "#58b894" },
+  { target: 50, prefix: "+", suffix: "%", label: "transaction throughput", accent: "#e06a45" },
   { target: 10, prefix: "", suffix: "⁹+", label: "rows moved through pipelines", accent: "#4f8ff7" },
 ];
 

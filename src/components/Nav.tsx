@@ -1,29 +1,45 @@
 "use client";
 
-import { AnimatePresence, motion, useScroll } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IconArrowUpRight, IconMenu, IconX } from "@/components/Icons";
 import { navItems } from "@/data/content";
 
 export default function Nav() {
-  const { scrollYProgress } = useScroll();
   const [active, setActive] = useState("");
   const [open, setOpen] = useState(false);
+  const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) setActive(entry.target.id);
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const el = progressRef.current;
+      if (el) {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const p = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+        el.style.transform = `scaleX(${p})`;
+      }
+      const band = window.innerHeight * 0.35;
+      let current = "";
+      for (const item of navItems) {
+        const section = document.getElementById(item.id);
+        if (section && section.getBoundingClientRect().top <= band) {
+          current = item.id;
         }
-      },
-      { rootMargin: "-30% 0px -60% 0px" }
-    );
-    for (const item of navItems) {
-      const el = document.getElementById(item.id);
-      if (el) observer.observe(el);
-    }
-    return () => observer.disconnect();
+      }
+      setActive(current);
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
 
   useEffect(() => {
@@ -43,9 +59,9 @@ export default function Nav() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-base/85 backdrop-blur-md border-b border-rule">
-      <motion.div
-        style={{ scaleX: scrollYProgress }}
-        className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-amber to-sage origin-left"
+      <div
+        ref={progressRef}
+        className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-amber to-sage origin-left scale-x-0"
       />
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
         <div className="flex items-center gap-4 min-w-0">
@@ -66,6 +82,7 @@ export default function Nav() {
             <a
               key={item.id}
               href={`#${item.id}`}
+              data-active={active === item.id}
               className={`relative font-mono text-xs uppercase tracking-widest py-1 ${
                 active === item.id ? "text-fg" : "text-muted hover:text-fg"
               }`}
@@ -74,13 +91,7 @@ export default function Nav() {
                 {String(i + 1).padStart(2, "0")}
               </span>
               {item.label}
-              {active === item.id && (
-                <motion.span
-                  layoutId="nav-underline"
-                  className="absolute left-0 right-0 -bottom-px h-[2px] bg-amber"
-                  transition={{ type: "spring", stiffness: 400, damping: 35 }}
-                />
-              )}
+              <span className="nav-underline" />
             </a>
           ))}
         </nav>
@@ -106,43 +117,41 @@ export default function Nav() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="md:hidden overflow-hidden border-t border-rule bg-surface"
+      <div
+        className={`menu-panel md:hidden bg-surface ${open ? "menu-open" : ""}`}
+        inert={!open}
+        aria-hidden={!open}
+      >
+        <div>
+          <div
+            className="px-6 py-4 flex flex-col border-t border-rule"
             onClick={() => setOpen(false)}
           >
-            <div className="px-6 py-4 flex flex-col">
-              {navItems.map((item, i) => (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  className={`py-3 font-mono text-sm uppercase tracking-widest border-b border-rule last:border-b-0 ${
-                    active === item.id ? "text-fg" : "text-muted"
-                  }`}
-                >
-                  <span className="text-amber mr-2">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  {item.label}
-                </a>
-              ))}
+            {navItems.map((item, i) => (
               <a
-                href="/cv.png"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 bg-amber text-base px-4 py-3 font-mono text-xs uppercase tracking-wider text-center inline-flex items-center justify-center gap-1"
+                key={item.id}
+                href={`#${item.id}`}
+                className={`py-3 font-mono text-sm uppercase tracking-widest border-b border-rule last:border-b-0 ${
+                  active === item.id ? "text-fg" : "text-muted"
+                }`}
               >
-                Resume <IconArrowUpRight className="w-3.5 h-3.5" />
+                <span className="text-amber mr-2">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                {item.label}
               </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            ))}
+            <a
+              href="/cv.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 bg-amber text-base px-4 py-3 font-mono text-xs uppercase tracking-wider text-center inline-flex items-center justify-center gap-1"
+            >
+              Resume <IconArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+      </div>
     </header>
   );
 }
