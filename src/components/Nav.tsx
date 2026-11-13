@@ -98,9 +98,8 @@ export default function Nav() {
 
         <div className="flex items-center gap-3">
           <a
-            href="/cv.png"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/cv.pdf"
+            download="George-Schumy-Onsent-CV.pdf"
             className="hidden sm:inline-flex items-center gap-1 bg-amber text-base px-4 py-2 font-mono text-xs uppercase tracking-wider hover:bg-phosphor transition-colors"
           >
             Resume <IconArrowUpRight className="w-3.5 h-3.5" />
@@ -142,9 +141,8 @@ export default function Nav() {
               </a>
             ))}
             <a
-              href="/cv.png"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/cv.pdf"
+              download="George-Schumy-Onsent-CV.pdf"
               className="mt-4 bg-amber text-base px-4 py-3 font-mono text-xs uppercase tracking-wider text-center inline-flex items-center justify-center gap-1"
             >
               Resume <IconArrowUpRight className="w-3.5 h-3.5" />

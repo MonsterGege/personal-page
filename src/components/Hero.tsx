@@ -56,7 +56,7 @@ export default function Hero() {
                 Get in touch
               </MagneticLink>
               <MagneticLink
-                href="/cv.png"
+                href="/cv.html"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 border border-rule text-fg px-7 py-3.5 font-mono text-sm uppercase tracking-wider hover:border-amber transition-colors"
