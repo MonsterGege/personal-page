@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, type MouseEvent, type ReactNode } from "react";
+import Link from "next/link";
 
 const clamp = (n: number, min: number, max: number) =>
   Math.max(min, Math.min(max, n));
@@ -43,7 +44,7 @@ export default function MagneticLink({
   };
 
   return (
-    <a
+    <Link
       ref={ref}
       href={href}
       target={target}
@@ -53,6 +54,6 @@ export default function MagneticLink({
       onMouseLeave={onMouseLeave}
     >
       {children}
-    </a>
+    </Link>
   );
 }

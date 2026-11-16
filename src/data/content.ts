@@ -98,6 +98,9 @@ export const about: string[] = [
   "When I'm not staring at logs, I'm probably reading, tinkering with hardware, or trying to perfect my instant ramen technique.",
 ];
 
+export const cvSummary =
+  "Backend Engineer with 4+ years of experience at one of Indonesia's largest retail companies, specializing in Golang microservices, Google Cloud Platform migrations, and site reliability engineering. Led cloud migration of 15,000+ stores, built Parquet-based data pipelines moving billions of rows, and kept high-volume transaction systems reliable through SLI/SLO monitoring, incident response, and zero-downtime deployments.";
+
 export const skills: Skill[] = [
   {
     title: "Languages & Frameworks",

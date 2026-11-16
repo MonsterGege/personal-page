@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>George Schumy — CV</title>
+<style>
+  @page { size: 8.5in 11in; margin: 0.5in 0.6in; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Liberation Sans", Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    line-height: 1.22;
+    color: #1f2328;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  a { color: inherit; text-decoration: none; }
+  header {
+    margin-bottom: 8pt;
+    border-top: 3pt solid #1f4e79;
+    padding-top: 8pt;
+  }
+  h1 {
+    font-family: "Liberation Serif", Georgia, "Times New Roman", serif;
+    font-size: 22pt;
+    font-weight: bold;
+    line-height: 1.05;
+    margin: 0 0 3pt;
+    color: #14161a;
+  }
+  .role {
+    font-size: 11pt;
+    font-weight: bold;
+    color: #1f4e79;
+    margin: 0 0 5pt;
+  }
+  .contact { font-size: 9.5pt; color: #57606a; margin: 0; }
+  .contact .sep { color: #1f4e79; }
+  section { margin-bottom: 6pt; break-inside: avoid; }
+  h2 {
+    font-size: 10.5pt;
+    text-transform: uppercase;
+    letter-spacing: 1pt;
+    color: #1f4e79;
+    margin: 0 0 4pt;
+    padding-bottom: 1.5pt;
+    border-bottom: 1pt solid #1f4e79;
+  }
+  p { margin: 0 0 3pt; }
+  .skills p { margin-bottom: 1.5pt; }
+  .skills strong { color: #14161a; }
+  .job { margin-bottom: 6pt; break-inside: avoid; }
+  .job:last-child { margin-bottom: 0; }
+  .job-title { font-size: 10.5pt; font-weight: bold; color: #14161a; margin: 0; }
+  .job-meta { font-size: 9.5pt; color: #57606a; margin: 0 0 2.5pt; }
+  ul { margin: 0; padding-left: 13pt; }
+  li { margin-bottom: 1pt; padding-left: 2pt; }
+  li::marker { color: #1f4e79; }
+  .edu-degree { margin: 0; color: #57606a; }
+</style>
+</head>
+<body>
+<header>
+  <h1>George Schumy</h1>
+  <p class="role">Backend Engineer &amp; SRE</p>
+  <p class="contact">Jakarta, Indonesia <span class="sep">&nbsp;|&nbsp;</span> +62 817-0250-994 <span class="sep">&nbsp;|&nbsp;</span> <a href="mailto:georgeonsent10@gmail.com">georgeonsent10@gmail.com</a> <span class="sep">&nbsp;|&nbsp;</span> <a href="https://schum.web.id">schum.web.id</a> <span class="sep">&nbsp;|&nbsp;</span> <a href="https://github.com/MonsterGege">github.com/MonsterGege</a></p>
+</header>
+
+<section>
+  <h2>Summary</h2>
+  <p>Backend Engineer with 4+ years of experience at one of Indonesia&rsquo;s largest retail companies, specializing in Golang microservices, Google Cloud Platform migrations, and site reliability engineering. Led cloud migration of 15,000+ stores, built Parquet-based data pipelines moving billions of rows, and kept high-volume transaction systems reliable through SLI/SLO monitoring, incident response, and zero-downtime deployments.</p>
+</section>
+
+<section class="skills">
+  <h2>Skills</h2>
+  <p><strong>Languages &amp; Frameworks:</strong> Golang (Echo), Python (FastAPI, Flask), TypeScript (Next.js), RESTful APIs &amp; HTTP</p>
+  <p><strong>Cloud &amp; Infrastructure:</strong> Google Cloud Platform, Cloud Run, Cloud SQL, Pub/Sub, Compute Engine, Load Balancing, Kubernetes (GKE), Secret Manager, Docker, Linux</p>
+  <p><strong>Databases &amp; Data:</strong> PostgreSQL, Redis, Firebase, Parquet data processing, Pub/Sub messaging</p>
+  <p><strong>DevOps &amp; CI/CD:</strong> Jenkins pipelines, Docker containers, automated deployments, zero-downtime releases</p>
+  <p><strong>SRE &amp; Reliability:</strong> Incident management &amp; on-call, SLI/SLO monitoring, capacity planning, observability (logging, metrics, tracing)</p>
+  <p><strong>Practices:</strong> OOP &amp; design patterns, data structures &amp; algorithms, system design &amp; architecture, Agile, cross-functional collaboration</p>
+</section>
+
+<section>
+  <h2>Experience</h2>
+  <div class="job">
+    <p class="job-title">Backend Engineer, Cloud Developer &amp; SRE</p>
+    <p class="job-meta">PT. Sumber Alfaria Trijaya (Alfamart), Jakarta, Indonesia &nbsp;|&nbsp; Jul 2022 &ndash; Present</p>
+    <ul>
+      <li>Spearheaded cloud migration of 70%+ of Alfamart stores (15,000+ stores) from legacy to cloud-native infrastructure, cutting downtime by 30% and boosting transaction throughput by 25%.</li>
+      <li>Architected high-performance Golang microservices for Parquet-based data pipelines, managing large-scale database operations and ETL workflows.</li>
+      <li>Created a private Golang standard-code module adopted across teams, standardizing shared patterns and utilities and speeding up new service development.</li>
+      <li>Built a master transfer system to migrate data from warehouse to stores at start-of-day and collect transaction/inventory data from stores back to warehouse at end-of-day, ensuring data consistency across 15,000+ stores.</li>
+      <li>Deployed containerized services to Cloud Run, Compute Engine, and GKE with Load Balancing, integrated with Cloud SQL, Pub/Sub, and Secret Manager.</li>
+      <li>Engineered automated CI/CD pipelines with Jenkins for zero-downtime deployments across multiple environments.</li>
+      <li>Maintained site reliability: defined SLIs/SLOs, managed incident response, conducted post-mortems, and implemented observability stack (logging, metrics, tracing).</li>
+      <li>Collaborated with frontend teams on design system development, improving cross-functional delivery speed.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <p class="job-title">Fullstack Developer Intern (IT Business Solution)</p>
+    <p class="job-meta">PT. Sumber Alfaria Trijaya (Alfamart), Jakarta, Indonesia &nbsp;|&nbsp; Sep 2021 &ndash; Jul 2022</p>
+    <ul>
+      <li>Developed a Python fingerprint authentication library (NitgenBSP) enabling biometric verification across multi-platform POS systems.</li>
+      <li>Built an automated cloud file sync client with intelligent retry/back-off and checksum verification, ensuring data integrity at scale.</li>
+      <li>Optimized transaction history reporting system, reducing query latency by 20% through query profiling and index tuning.</li>
+      <li>Contributed to a Store Information System for master stock management, improving inventory accuracy and operational reliability.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Education</h2>
+  <p class="job-title">Universitas Kristen Satya Wacana</p>
+  <p class="edu-degree">Bachelor of Information Engineering &nbsp;|&nbsp; Graduated 2022 &nbsp;|&nbsp; GPA: 3.96 / 4.00</p>
+</section>
+</body>
+</html>

@@ -1,13 +1,18 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { IconArrowUpRight, IconMenu, IconX } from "@/components/Icons";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { IconArrowUpRight, IconDownload, IconMenu, IconX } from "@/components/Icons";
 import { navItems } from "@/data/content";
 
 export default function Nav() {
   const [active, setActive] = useState("");
   const [open, setOpen] = useState(false);
   const progressRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const prefix = pathname === "/" ? "" : "/";
+  const onCv = pathname === "/cv";
 
   useEffect(() => {
     let raf = 0;
@@ -66,7 +71,7 @@ export default function Nav() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
         <div className="flex items-center gap-4 min-w-0">
           <a
-            href="#top"
+            href={`${prefix}#top`}
             className="font-mono text-sm font-bold tracking-tight text-fg whitespace-nowrap"
           >
             G.SCHUMY<span className="text-muted font-normal"> / OPS</span>
@@ -81,7 +86,7 @@ export default function Nav() {
           {navItems.map((item, i) => (
             <a
               key={item.id}
-              href={`#${item.id}`}
+              href={`${prefix}#${item.id}`}
               data-active={active === item.id}
               className={`relative font-mono text-xs uppercase tracking-widest py-1 ${
                 active === item.id ? "text-fg" : "text-muted hover:text-fg"
@@ -97,14 +102,22 @@ export default function Nav() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
-            href="/cv.png"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-1 bg-amber text-base px-4 py-2 font-mono text-xs uppercase tracking-wider hover:bg-phosphor transition-colors"
-          >
-            Resume <IconArrowUpRight className="w-3.5 h-3.5" />
-          </a>
+          {onCv ? (
+            <a
+              href="/cv.pdf"
+              download
+              className="hidden sm:inline-flex items-center gap-1 bg-amber text-base px-4 py-2 font-mono text-xs uppercase tracking-wider hover:bg-phosphor transition-colors"
+            >
+              Download PDF <IconDownload className="w-3.5 h-3.5" />
+            </a>
+          ) : (
+            <Link
+              href="/cv"
+              className="hidden sm:inline-flex items-center gap-1 bg-amber text-base px-4 py-2 font-mono text-xs uppercase tracking-wider hover:bg-phosphor transition-colors"
+            >
+              Resume <IconArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
+          )}
           <button
             type="button"
             className="md:hidden w-9 h-9 flex items-center justify-center border border-rule text-fg hover:border-amber transition-colors"
@@ -130,8 +143,8 @@ export default function Nav() {
             {navItems.map((item, i) => (
               <a
                 key={item.id}
-                href={`#${item.id}`}
-                className={`py-3 font-mono text-sm uppercase tracking-widest border-b border-rule last:border-b-0 ${
+              href={`${prefix}#${item.id}`}
+              className={`py-3 font-mono text-sm uppercase tracking-widest border-b border-rule last:border-b-0 ${
                   active === item.id ? "text-fg" : "text-muted"
                 }`}
               >
@@ -141,14 +154,22 @@ export default function Nav() {
                 {item.label}
               </a>
             ))}
-            <a
-              href="/cv.png"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 bg-amber text-base px-4 py-3 font-mono text-xs uppercase tracking-wider text-center inline-flex items-center justify-center gap-1"
-            >
-              Resume <IconArrowUpRight className="w-3.5 h-3.5" />
-            </a>
+            {onCv ? (
+              <a
+                href="/cv.pdf"
+                download
+                className="mt-4 bg-amber text-base px-4 py-3 font-mono text-xs uppercase tracking-wider text-center inline-flex items-center justify-center gap-1"
+              >
+                Download PDF <IconDownload className="w-3.5 h-3.5" />
+              </a>
+            ) : (
+              <Link
+                href="/cv"
+                className="mt-4 bg-amber text-base px-4 py-3 font-mono text-xs uppercase tracking-wider text-center inline-flex items-center justify-center gap-1"
+              >
+                Resume <IconArrowUpRight className="w-3.5 h-3.5" />
+              </Link>
+            )}
           </div>
         </div>
       </div>
