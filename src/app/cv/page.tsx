@@ -55,7 +55,7 @@ export default function CvPage() {
               </div>
               <a
                 href="/cv.pdf"
-                download
+                download="George-Schumy-Onsent-CV.pdf"
                 className="inline-flex items-center gap-2 bg-amber text-base px-6 py-3 font-mono text-xs uppercase tracking-wider hover:bg-phosphor transition-colors"
               >
                 Download PDF <IconDownload className="w-4 h-4" />
@@ -167,7 +167,7 @@ export default function CvPage() {
             Need it for an application? Grab the{" "}
             <a
               href="/cv.pdf"
-              download
+              download="George-Schumy-Onsent-CV.pdf"
               className="text-amber hover:text-phosphor transition-colors"
             >
               ATS-ready PDF

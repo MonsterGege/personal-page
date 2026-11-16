@@ -105,7 +105,7 @@ export default function Nav() {
           {onCv ? (
             <a
               href="/cv.pdf"
-              download
+              download="George-Schumy-Onsent-CV.pdf"
               className="hidden sm:inline-flex items-center gap-1 bg-amber text-base px-4 py-2 font-mono text-xs uppercase tracking-wider hover:bg-phosphor transition-colors"
             >
               Download PDF <IconDownload className="w-3.5 h-3.5" />
@@ -143,8 +143,8 @@ export default function Nav() {
             {navItems.map((item, i) => (
               <a
                 key={item.id}
-              href={`${prefix}#${item.id}`}
-              className={`py-3 font-mono text-sm uppercase tracking-widest border-b border-rule last:border-b-0 ${
+                href={`${prefix}#${item.id}`}
+                className={`py-3 font-mono text-sm uppercase tracking-widest border-b border-rule last:border-b-0 ${
                   active === item.id ? "text-fg" : "text-muted"
                 }`}
               >
@@ -157,7 +157,7 @@ export default function Nav() {
             {onCv ? (
               <a
                 href="/cv.pdf"
-                download
+                download="George-Schumy-Onsent-CV.pdf"
                 className="mt-4 bg-amber text-base px-4 py-3 font-mono text-xs uppercase tracking-wider text-center inline-flex items-center justify-center gap-1"
               >
                 Download PDF <IconDownload className="w-3.5 h-3.5" />
